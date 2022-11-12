@@ -23,6 +23,9 @@ class Skills
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
     private ?int $sort_order = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Skills
     public function setSortOrder(?int $sort_order): self
     {
         $this->sort_order = $sort_order;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
