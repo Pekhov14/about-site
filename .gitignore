@@ -20,5 +20,6 @@
 ###< symfony/phpunit-bridge ###
 
 .idea
+.fleet
 docker/db/data
 .DS_Store
