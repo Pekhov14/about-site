@@ -7,6 +7,13 @@
     text-decoration: none;
 }
 
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
 @charset "UTF-8";
 :root {
     --bs-blue: #0d6efd;

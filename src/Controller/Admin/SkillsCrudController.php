@@ -29,9 +29,7 @@ class SkillsCrudController extends AbstractCrudController
 
     public function configureCrud(Crud $crud): Crud
     {
-        return $crud
-            ->setPaginatorPageSize(10)
-            ;
+        return $crud->setPaginatorPageSize(10);
     }
 
     private function getSugChoices(): array
