@@ -20,6 +20,9 @@ class FAQ
     #[ORM\Column(type: Types::TEXT)]
     private ?string $answer = null;
 
+    #[ORM\Column]
+    private ?int $sort_order = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class FAQ
     public function setAnswer(string $answer): self
     {
         $this->answer = $answer;
+
+        return $this;
+    }
+
+    public function getSortOrder(): ?int
+    {
+        return $this->sort_order;
+    }
+
+    public function setSortOrder(int $sort_order): self
+    {
+        $this->sort_order = $sort_order;
 
         return $this;
     }

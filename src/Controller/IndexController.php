@@ -10,13 +10,21 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
 {
-    #[Route('/', name: 'app_index')]
-    public function index(SectionDataGenerator $dataGenerator, EntityManagerInterface $em): Response
+    private readonly SectionDataGenerator $sectionDataGenerator;
+    public function __construct(private readonly EntityManagerInterface $em)
     {
-        $skills = $dataGenerator->getSkills($em);
+        $this->sectionDataGenerator = new SectionDataGenerator($this->em);
+    }
+
+    #[Route('/', name: 'app_index')]
+    public function index(): Response
+    {
+        $skills = $this->sectionDataGenerator->getSkills();
+        $faq    = $this->sectionDataGenerator->getFAQ();
 
         return $this->render('index/index.html.twig', [
             'skills' => $skills,
+            'faq' => $faq,
         ]);
     }
 }
