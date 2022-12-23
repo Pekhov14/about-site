@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Experience;
 use App\Entity\FAQ;
 use App\Entity\Skills;
 use App\Repository\FAQRepository;
@@ -34,7 +35,7 @@ class SectionDataGenerator
         return $skills;
     }
 
-    public function getFAQ()
+    public function getFAQ(): array
     {
         $repository = $this->entityManager->getRepository(FAQ::class);
         $faqDataObjects = $repository->findBy([], ['sort_order' => 'ASC']);
@@ -49,5 +50,27 @@ class SectionDataGenerator
         }
 
         return $faq;
+    }
+
+    public function getExperience(): array
+    {
+        $repository = $this->entityManager->getRepository(Experience::class);
+        $experienceObjects = $repository->findBy([], ['date_start' => 'DESC']);
+
+        $experiences = [];
+
+        foreach ($experienceObjects as $experience) {
+            $experiences[] = [
+                'type'        => $experience->getType(),
+                'name'        => $experience->getName(),
+                'description' => $experience->getDescription(),
+                'date_start'  => $experience->getDateStart()?->format('d.m.Y'),
+                'date_end'    => ($experience->getDateEnd() === null)
+                    ? 'Present'
+                    : $experience->getDateEnd()->format('d.m.Y'),
+            ];
+        }
+
+        return $experiences;
     }
 }

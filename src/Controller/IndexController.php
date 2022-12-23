@@ -19,12 +19,14 @@ class IndexController extends AbstractController
     #[Route('/', name: 'app_index')]
     public function index(): Response
     {
-        $skills = $this->sectionDataGenerator->getSkills();
-        $faq    = $this->sectionDataGenerator->getFAQ();
+        $skills      = $this->sectionDataGenerator->getSkills();
+        $faq         = $this->sectionDataGenerator->getFAQ();
+        $experiences = $this->sectionDataGenerator->getExperience();
 
         return $this->render('index/index.html.twig', [
-            'skills' => $skills,
-            'faq' => $faq,
+            'skills'      => $skills,
+            'faq'         => $faq,
+            'experiences' => $experiences
         ]);
     }
 }

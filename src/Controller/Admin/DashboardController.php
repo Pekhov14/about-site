@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Experience;
 use App\Entity\FAQ;
 use App\Entity\Skills;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -45,5 +46,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Skills', 'fa-solid fa-tags', Skills::class);
         yield MenuItem::linkToCrud('FAQ', 'fa fa-comments', FAQ::class);
+        yield MenuItem::linkToCrud('Experience', 'fa-solid fa-briefcase', Experience::class);
     }
 }
