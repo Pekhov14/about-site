@@ -9,7 +9,7 @@
                 <div class="accordion accordion-icon accordion-bg-light" id="accordionExample2">
                     {% for key, dataFaq in faq %}
                         <div class="accordion-item mb-3">
-                            <h6 class="accordion-header font-base" id="heading-1">
+                            <h5 class="accordion-header font-base" id="heading-1">
                                 <button class="accordion-button fw-bold rounded d-inline-block collapsed"
                                         type="button"
                                         data-bs-toggle="collapse"
@@ -18,7 +18,7 @@
                                         aria-controls="collapse-{{ key }}">
                                     {{ dataFaq.question }}
                                 </button>
-                            </h6>
+                            </h5>
                             <div id="collapse-{{ key }}"
                                  class="accordion-collapse collapse"
                                  aria-labelledby="heading-1"
